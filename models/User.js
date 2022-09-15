@@ -17,7 +17,6 @@ User.init(
       autoIncrement: true,
     },
     user_name: {
-        // change in other files
       type: DataTypes.STRING,
       allowNull: false,
     },
