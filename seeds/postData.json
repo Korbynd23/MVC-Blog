@@ -1,14 +1,17 @@
 [
     {
         "title": "Post1",
-        "text": "Text for post1"
+        "text": "Text for post1",
+        "userid": "1"
     },
     {
         "title": "Post2",
-        "text": "Text for post2"
+        "text": "Text for post2",
+        "userid": "2"
     },
     {
         "title": "Post3",
-        "text": "Text for post3"
+        "text": "Text for post3",
+        "userid": "3"
     }
 ]

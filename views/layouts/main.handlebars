@@ -10,17 +10,23 @@
 </head>
 
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/post">Dashboard</a>
-  </nav>
   <header>
     <h1>Welcome to the Tech Blog</h1>
   </header>
+  <nav>
+    <a href="/">Home</a>
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+    <a href="/api/posts">Dashboard</a>
+  </nav>
   <main>
     <div>
+
       {{{body}}}
+      
     </div>
   </main>
 </body>

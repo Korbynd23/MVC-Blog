@@ -39,6 +39,9 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+  justify-content: center;
+  margin-top: 20px;
+
 }
 
 aside {
@@ -55,7 +58,6 @@ nav {
 }
 
 nav a {
-  color: var(--light);
   padding: 14px 20px;
   text-decoration: none;
   text-align: center;
@@ -161,4 +163,15 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+
+}
+
+.editAllPosts {
+  background-color:rgb(66, 107, 161);
+  color:rgb(0, 0, 0);
+  outline: black outset 2px;
+}
+
+.homeLogText {
+  font-size: 24px;
 }
