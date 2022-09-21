@@ -3,43 +3,6 @@ const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-// GET all posts
-router.get('/', async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['user_name'],
-        }
-      ],
-    });
-    
-    const postMetaData = postData.map((newData) => newData.get({ plain: true }));
-    console.log(postMetaData)
-    res.render('dashboard', {
-      postMetaData,
-      loggedIn: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// GET post by id
-router.get('/:id', async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      where: {
-        id: req.params.id
-      }
-    })
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // CREATE a new post
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -48,11 +11,7 @@ router.post('/', withAuth, async (req, res) => {
       text: req.body.newText,
       user_id: req.session.user_id,
     });
-    // res.render('/api/posts', {
-    //   newPost,
-    //   loggedIn: req.session.logged_in,
-    // });
-    console.log('made it here')
+
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);

@@ -1,7 +1,7 @@
 {{#each postMetaData as |post|}}
 <div class="editAllPosts">
     <div>
-        <h4>{{post.title}}</h4>
+        <a href="/dashboard/{{post.id}}"><h4>{{post.title}}</h4></a>
         <p>{{post.text}}</p>
         <p>{{post.createdAt}}</p>
         <p>Posted by: {{post.user.user_name}}</p>
@@ -9,4 +9,4 @@
 </div>
 {{/each}}
 
-{{!-- need to create another landing page --}}
+<a href="/api/new">Create a New Post</a>
