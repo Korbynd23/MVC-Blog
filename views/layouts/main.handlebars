@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog 🤖</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -15,12 +16,12 @@
   </header>
   <nav>
     <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
     <a href="/login">Login</a>
     {{/if}}
-    <a href="/dashboard">Dashboard</a>
   </nav>
   <main>
     <div>

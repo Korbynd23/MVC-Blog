@@ -2,9 +2,33 @@ const router = require('express').Router();
 const { Comment, User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
+// GET all posts
 router.get('/', async (req, res) => {
-  res.render('login')
-})
+  try {
+      const postData = await Post.findAll({
+          include: [
+              {
+                  model: User,
+                  attributes: ['user_name'],
+              }
+          ],
+      });
+
+      const postMetaData = postData.map((newData) => newData.get({ plain: true }));
+      console.log(postMetaData)
+      res.render('landing-page', {
+          postMetaData,
+          loggedIn: req.session.logged_in,
+      });
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+
+// router.get('/', async (req, res) => {
+//   res.redirect('/dashboard')
+// })
 
 router.get('/post/:id', async (req, res) => {
   try {

@@ -1,18 +1,33 @@
+<div class="editAllPosts two">
+    <div class="formEdit" data-id=`{{posted.id}}`>
+        <form>      
+            <div class="displayNone">
+                <label for="exampleFormControlInput1">Title</label>
+                <textarea class="form-control" id="hiddenId"
+                    >{{posted.id}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <textarea class="form-control" id="formTextarea1"
+                    placeholder={{posted.title}}></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Content</label>
+                <textarea class="form-control" id="formTextarea2" rows="3"
+                    placeholder={{posted.text}}></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" id="edit-post-form" class="btn btn-primary btn-lg btn-block">Update Post</button>
+            </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div class="d-flex justify-content-center">
+                <button type="click" id="delete-btn" class="btn btn-primary btn-lg btn-block">Delete Post</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <script src="/js/edit.js"></script>
+<script src="/js/delete-post.js"></script>
+<script src="/js/comment.js"></script>
