@@ -3,6 +3,9 @@ const { Post, User } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 
+// GET all posts (use for insomnia)
+
+
 // CREATE a new post
 router.post('/', async (req, res) => {
   try {

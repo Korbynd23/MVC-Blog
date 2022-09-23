@@ -15,14 +15,10 @@ router.get('/', withAuth, (req, res) => {
         'text'
       ],
       include: [
-        {
-          model: Comment,
-          attributes: ['text', 'createdAt'],
-          include: {
-            model: User,
-            attributes: ['user_name']
-          }
-        },
+        // {
+        //   model: Comment,
+        //   attributes: ['comment_text', 'createdAt'],
+        // },
         {
           model: User,
           attributes: ['user_name']

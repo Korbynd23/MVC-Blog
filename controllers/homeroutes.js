@@ -5,31 +5,25 @@ const withAuth = require('../utils/auth');
 // GET all posts
 router.get('/', async (req, res) => {
   try {
-      const postData = await Post.findAll({
-          include: [
-              {
-                  model: User,
-                  attributes: ['user_name'],
-              }
-          ],
-      });
+    const postData = await Post.findAll({
+      include: [
+       User
+      ],
+    });
 
-      const postMetaData = postData.map((newData) => newData.get({ plain: true }));
-      console.log(postMetaData)
-      res.render('landing-page', {
-          postMetaData,
-          loggedIn: req.session.logged_in,
-      });
+    const postMetaData = postData.map((newData) => newData.get({ plain: true }));
+    console.log(postMetaData)
+    res.render('landing-page', {
+      postMetaData,
+      loggedIn: req.session.logged_in,
+    });
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
   }
 });
 
 
-// router.get('/', async (req, res) => {
-//   res.redirect('/dashboard')
-// })
-
+// GET posts by id
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -42,8 +36,8 @@ router.get('/post/:id', async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    res.render('post', {post});
-    
+    res.render('post', { post });
+
   } catch (err) {
     res.status(500).json(err);
   }

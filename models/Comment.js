@@ -5,11 +5,14 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    title: DataTypes.STRING,
-    text: DataTypes.STRING
+    comment_title: DataTypes.STRING,
+    comment_text: DataTypes.STRING
   },
   {
     sequelize,
+  },
+  {
+    freezeTableName: true,
   }
 );
 
