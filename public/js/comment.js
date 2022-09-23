@@ -1,6 +1,41 @@
-// const commentClick = document.querySelector('#comment');
+const newComment = async (event) => {
+    event.preventDefault();
+
+    const commentText = document.querySelector('#formTextarea').value;
+  
+    const post_id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
+  
+    if (commentText) {
+        const response = await fetch('/api/comments', {
+          method: 'POST',
+          body: JSON.stringify({
+            post_id,
+            commentText
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+          
+        });
+      
+        if (response.ok) {
+          document.location.reload();
+        } else {
+          alert(response.statusText);
+        }
+      }
+  }
+
+
+document.querySelector('#commentBtn').addEventListener("click", newComment());
+
+// const commentClick = document.querySelector('#commentBtn');
 // const router = require('express').Router();
-// const { Post} = require('../../models');
+// const { Post } = require('../../models');
+
+// const editId = document.querySelector(`input[name="post_id"]`).value;
 
 
 // router.get('/:id', async (req, res) => {
@@ -19,4 +54,3 @@
 //     }
 //   });
 
-//   commentClick.addEventListener("click", newComment());

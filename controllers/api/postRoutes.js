@@ -23,11 +23,12 @@ router.put('/:id', (req, res) => {
 
   Post.update(
     {
-      ...req.body,
+      title: req.body.newTitle,
+      text: req.body.newText
     },
     {
       where: {
-        id: req.params.id,
+        id: req.body.editId,
       },
     }
   )
