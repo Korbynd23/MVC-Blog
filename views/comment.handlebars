@@ -1,24 +1,23 @@
 <div class="editAllPosts">
-  <div>
-    <h4>{{posted.title}}</h4>
-    <p>{{posted.text}}</p>
-    <p>{{format_date posted.createdAt}}</p>
-    <p>Posted by: {{posted.user.user_name}}</p>
-  </div>
+    <div>
+        <h4>{{posted.title}}</h4>
+        <p>{{posted.text}}</p>
+        <p>{{format_date posted.createdAt}}</p>
+        <p>Posted by: {{posted.user.user_name}}</p>
+    </div>
+    {{> comment-details }}
 </div>
 
 
 <div class="editAllPosts two">
     <div class="formEdit" data-id=`{{posted.id}}`>
-        <form>      
+        <form>
             <div>
-                <input class="form-control" id="hiddenId" name="post_id" type="hidden" value="{{posted.id}}"
-                    ></input>
+                <input class="form-control" id="hiddenId" name="postId" type="hidden" value="{{posted.id}}"></input>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1"></label>
-                <textarea class="form-control" id="formTextarea" rows="3"
-                    placeholder="Add comment here"></textarea>
+                <textarea class="form-control" id="formTextarea" rows="3" placeholder="Add comment here"></textarea>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" id="commentBtn" class="btn btn-primary btn-lg btn-block">Submit Comment</button>
@@ -28,22 +27,3 @@
 </div>
 
 <script src="/js/comment.js"></script>
-
-
-
-{{!-- <section class="editAllPosts">
-  <h4 class="title">Add a Comment</h4>
-  <hr>
-
-  <form class="edit-post-form">
-    <div>
-      <label for="post-title">Title:</label>
-      <input class="input" type="text" id="post-title" name="post-title" placeholder="insert blog title here" />
-    </div>
-    <div>
-      <label for="post-text">Content:</label>
-      <input class="textarea is-large" id="post-text" name="post-text" placeholder="insert blog content here" />
-    </div>
-  </form>
-  <button id="edit-post" class="button is-primary editButton">Submit Comment</button>
-</section> --}}

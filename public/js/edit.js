@@ -1,7 +1,7 @@
 const deleteButton = document.querySelector('#del-post-btn');
-const updateButton = document.querySelector('#edit-post-btn');
+const updateButton = document.querySelector('#edit-post-btn')
 
-const editId = document.querySelector(`input[name="post_id"]`).value;
+const editId = document.querySelector(`input[name="postId"]`).value;
 
 
 const newCharHandler = async (event) => {
@@ -9,8 +9,6 @@ const newCharHandler = async (event) => {
   
     const newTitle = document.querySelector('#formTextarea1').value;
     const newText = document.querySelector('#formTextarea2').value;
-    // const editId = document.querySelector('#hiddenId').value;
-
 
     const response = await fetch(`/api/posts/${editId}`, {
         method: 'PUT',

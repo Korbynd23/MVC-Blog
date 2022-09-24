@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
         console.log(posted)
         res.render('edit', {
             posted,
-            loggedIn: req.session.logged_in,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);

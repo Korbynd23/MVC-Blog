@@ -1,18 +1,16 @@
 const router = require('express').Router();
 const { Post, User } = require('../../models');
-// const withAuth = require('../../utils/auth');
-
-
-// GET all posts (use for insomnia)
+const withAuth = require('../../utils/auth');
 
 
 // CREATE a new post
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       title: req.body.newTitle,
       text: req.body.newText,
-      userId: req.session.user_id,
+      userId: req.session.userId,
+      // loggedIn: req.session.loggedIn  -- still doesnt work
     });
     res.status(200).json(newPost);
     console.log(newPost)
@@ -22,7 +20,7 @@ router.post('/', async (req, res) => {
 });
 
 // UPDATE posts by id
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
 
   Post.update(
     {
@@ -45,7 +43,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE post by route
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {

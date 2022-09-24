@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all posts that logged in user created
 router.get('/', withAuth, (req, res) => {
     Post.findAll({
       where: {
-        userId: req.session.user_id
+        userId: req.session.userId
       },
       attributes: [
         'id',
@@ -15,10 +15,6 @@ router.get('/', withAuth, (req, res) => {
         'text'
       ],
       include: [
-        // {
-        //   model: Comment,
-        //   attributes: ['comment_text', 'createdAt'],
-        // },
         {
           model: User,
           attributes: ['user_name']
@@ -37,32 +33,30 @@ router.get('/', withAuth, (req, res) => {
 
 
 // GET post by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findOne({
             where: {
                 id: req.params.id
             },
             include: [
-              // {
-              //   model: Comment,
-              //   attributes: ['id', 'text', 'post_id', 'user_id', 'createdAt'],
-              //   include: {
-              //     model: User,
-              //     attributes: ['user_name']
-              //   }
-              // },
               {
                 model: User,
                 attributes: ['user_name']
+              },
+              {
+                model: Comment,
+                attributes: ['comment_text'],
+                include: [User]
               }
             ]
         })
         const posted = postData.get({ plain: true });
         console.log(posted)
+        // res.json(posted)
         res.render('comment', {
             posted,
-            loggedIn: req.session.logged_in,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);

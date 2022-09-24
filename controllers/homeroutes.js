@@ -7,15 +7,19 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
-       User
-      ],
+        User,
+        {
+          model: Comment,
+          include: [User]
+        }
+      ]
     });
 
     const postMetaData = postData.map((newData) => newData.get({ plain: true }));
-    console.log(postMetaData)
+    // console.log(postMetaData)
     res.render('landing-page', {
       postMetaData,
-      loggedIn: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -24,51 +28,36 @@ router.get('/', async (req, res) => {
 
 
 // GET posts by id
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: Comment
-        },
-      ],
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [Comment]
+    })
+    const posted = postData.get({ plain: true });
+    console.log(posted)
+    res.render('comment', {
+      posted,
+
+
     });
 
-    const post = postData.get({ plain: true });
 
-    res.render('post', { post });
-
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Comment }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/profile');
+  if (req.session.loggedIn) {
+    res.render('login');
     return;
   }
 
   res.render('login');
 });
+
 
 module.exports = router;
