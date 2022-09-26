@@ -9,12 +9,12 @@ const commentData = [
     {
         userId: 3,
         postId: 2,
-        comment_text: "Wow, amazing work!"
+        comment_text: "I have a question!"
     },
     {
         userId: 1,
         postId: 3,
-        comment_text: "Awesome! kudos to everyone who have contributed"
+        comment_text: "Wow! Thats crazy, I better be cautious.."
     }
 ]
 

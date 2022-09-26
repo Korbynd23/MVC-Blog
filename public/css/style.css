@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color:  #000000b0;
 }
 
 a {
@@ -31,15 +31,12 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
+  background: url(../images/26174.webp);
+  background-size: cover;
   color: var(--light);
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  justify-content: center;
   margin-top: 20px;
 
 }
@@ -54,7 +51,7 @@ aside {
 
 nav {
   display: flex;
-  background-color: var(--secondary);
+  background-color: #4bab90;
 }
 
 nav a {
@@ -66,16 +63,6 @@ nav a {
 nav a:hover {
   color: var(--secondary);
   background-color: var(--dark);
-}
-
-.gallery {
-  flex: 4;
-  background-color: #fff;
-  padding: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn-no-style {
@@ -92,19 +79,6 @@ nav a:hover {
 img {
   max-width: 100%;
   height: auto;
-}
-
-.painting {
-  width: 50%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 25px;
-}
-
-.painting-details {
-  text-align: center;
-  padding: 10px 20px;
-  font-weight: bold;
 }
 
 /* CARDS */
@@ -167,10 +141,12 @@ img {
 }
 
 .editAllPosts {
-  background-color:rgb(66, 107, 161);
-  color:rgb(0, 0, 0);
-  outline: black outset 2px;
-  width: 60vh;
+  background-color: rgb(223 216 216);
+  color: rgb(0, 0, 0);
+  outline: rgb(83, 83, 83) outset 1px;
+  width: 75%;
+  margin-left: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .homeLogText {
@@ -207,4 +183,25 @@ img {
 
 .editButton {
   display: flex;
+}
+
+.createForm {
+  padding-bottom: 20px;
+  justify-content: center;
+  margin-left: 15px;
+  width: 75vh;
+}
+
+.displayTextBoxs {
+  display: flex;
+  justify-content: center;
+}
+
+.underline {
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.fontSize {
+  font-size: 14px;
 }

@@ -1,22 +1,19 @@
-
-<div>
+<div class="createForm">
   <section>
-  <h2 class="title">create new blog post</h2>
-  <hr>
+    <hr>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title:</label>
-      <input class="input" type="text" id="post-title" name="post-title" placeholder="insert blog title here" />
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Post Title</label>
+      <textarea class="form-control" id="post-title" rows="1" placeholder=Title></textarea>
     </div>
-    <div>
-      <label for="post-text">Content:</label>
-      <input class="textarea is-large" id="post-text" name="post-text" placeholder="insert blog content here" />
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Content</label>
+      <textarea class="form-control" id="post-text" rows="3" placeholder=...></textarea>
     </div>
-  </form>
-</section>
-<button id="create-post">Create</button>
-
+    <div class="d-flex justify-content-center">
+      <button type="submit" id="create-post" class="btn btn-primary btn-lg btn-block">Create Post</button>
+    </div>
+  </section>
 </div>
 
 
