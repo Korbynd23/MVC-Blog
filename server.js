@@ -14,7 +14,7 @@ const sess = {
   secret: 'Super secret secret',
   cookie: {
     // set timeout low to demonstrate functionality
-    maxAge: 1000000,
+    maxAge: 100000,
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
